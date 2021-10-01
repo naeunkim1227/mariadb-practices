@@ -1,6 +1,7 @@
 -- join
 
 -- inner join
+
 -- 예제: employees 테이블과 title 테이블을 join 하여 직원의 이름과 직책을 모두 출력
 select *
 from employees e, titles t
@@ -30,3 +31,13 @@ where b.to_date = '9999-01-01';
 
 
 -- 2) join ~ using
+select a.first_name, b.title
+from employees a join titles b
+using (emp_no)
+where b.to_date = '9999-01-01';
+
+-- 3) join ~ on(가장 많이 사용, outer join에서도 사용한다.)
+select a.first_name, b.title
+from employees a join titles b
+on a.emp_no = b.emp_no
+where b.to_date = '9999-01-01';
