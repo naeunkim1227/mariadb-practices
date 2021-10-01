@@ -36,8 +36,36 @@ from employees a join titles b
 using (emp_no)
 where b.to_date = '9999-01-01';
 
+
+
+
 -- 3) join ~ on(가장 많이 사용, outer join에서도 사용한다.)
 select a.first_name, b.title
 from employees a join titles b
 on a.emp_no = b.emp_no
 where b.to_date = '9999-01-01';
+
+
+
+-- outer join
+-- insert into dept values(null, '총무');
+-- insert into dept values(null, '영업');
+-- insert into dept values(null, '개발');
+-- insert into dept values(null, '기획');
+
+select * from emp;
+
+-- insert into emp values (null,'둘리',1);
+-- insert into emp values (null,'또치',2);
+-- insert into emp values (null,'마이콜',3);
+ -- insert into emp values (null,'길동', null);
+
+select a.name as '이름' , b.name as '부서'
+from emp a join dept b on a.dept_no = b.no;
+
+select a.name as '이름' , ifnull(b.name, '없음') as '부서'
+from emp a left join dept b on a.dept_no = b.no;
+
+select a.name as '이름' , b.name  as '부서'
+from emp a right join dept b on a.dept_no = b.no;
+
