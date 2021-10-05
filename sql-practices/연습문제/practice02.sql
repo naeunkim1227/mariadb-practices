@@ -12,10 +12,15 @@ from employees
 order by hire_date desc 
 limit 1;
 
+-- 문제3.가장 오래 근속한 직원의 입사일은 언제인가요? 다음 형식으로 출력해주세요. 예) 2014년 07월 10일 보류
+select emp_no,period_diff(date_format(curdate(),'%Y-%m-%d'),hire_date) 
+as '근속일',hire_date 
+from employees
+order by period_diff(date_format(curdate(),'%Y-%m-%d'),hire_date) desc limit 1;
 
--- 문제3.가장 오래 근속한 직원의 입사일은 언제인가요? 다음 형식으로 출력해주세요. 예) 2014년 07월 10일
 
 -- 문제4. 현재 이 회사의 평균 연봉은 얼마입니까?
+select avg(salary) as '평균 연봉' from salaries;
 
 -- 문제5. 현재 이 회사의 최고/최저 연봉은 얼마입니까?
 
