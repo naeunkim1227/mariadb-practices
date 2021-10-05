@@ -23,5 +23,11 @@ order by period_diff(date_format(curdate(),'%Y-%m-%d'),hire_date) desc limit 1;
 select avg(salary) as '평균 연봉' from salaries;
 
 -- 문제5. 현재 이 회사의 최고/최저 연봉은 얼마입니까?
+select max(salary) as '최고 연봉' , min(salary) as '최저 연봉' 
+from salaries;
 
 -- 문제6. 최고 어린 사원의 나이와 최 연장자의 나이는?
+select floor((max(datediff(date_format(sysdate(), '%Y-%m-%d'), birth_date))/365)) as '연장자' , 
+floor((min(datediff(date_format(sysdate(), '%Y-%m-%d'), birth_date))/365))as '어린사원'
+from employees;
+
