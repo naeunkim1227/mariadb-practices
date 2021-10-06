@@ -6,17 +6,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class InsertTest {
+public class DeleteTest02 {
 
 	public static void main(String[] args) {
-		insert("영업");
-		insert("개발");
-		insert("기획");
-	
-		
+		Boolean result =  delete(5L);
+		System.out.println(result? "성공" : "실패");
+
 	}
 
-	private static boolean insert(String name) {
+	private static Boolean delete(long n) {
 		boolean result = false;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -32,15 +30,15 @@ public class InsertTest {
 			
 			System.out.println("연결성공");
 			
-			//3.SQL문 준비
-			String sql = "insert into dept values (null , ?)";
+			//3.SQL 준비
+			String sql = "delete from dept where no=?";
 			pstmt = conn.prepareStatement(sql);
 			
 			//4.바인딩
-			pstmt.setString(1, name);
+			pstmt.setLong(1, n);
 			
 			//5. SQL실행
-			int count = pstmt.executeUpdate();
+			int count = pstmt.executeUpdate(sql);
 			
 			//count가 1일때 true로 변경
 			result = count == 1;
@@ -63,7 +61,6 @@ public class InsertTest {
 				e.printStackTrace();
 			}
 		}
-		
 		
 		return result;
 		

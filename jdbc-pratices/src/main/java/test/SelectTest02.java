@@ -3,23 +3,22 @@ package test;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class InsertTest {
+public class SelectTest02 {
 
 	public static void main(String[] args) {
-		insert("영업");
-		insert("개발");
-		insert("기획");
-	
+		search("pat");
+		
 		
 	}
-
-	private static boolean insert(String name) {
-		boolean result = false;
+	
+	public static void search(String keyword) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		try {
 			//1. JDBC 드라이버 로드
@@ -32,18 +31,23 @@ public class InsertTest {
 			
 			System.out.println("연결성공");
 			
-			//3.SQL문 준비
-			String sql = "insert into dept values (null , ?)";
+			//3.statement 생성
+			String sql = "select emp_no,first_name from employees where first_name like ?";
 			pstmt = conn.prepareStatement(sql);
 			
 			//4.바인딩
-			pstmt.setString(1, name);
+			pstmt.setString(1, "%" + keyword + "%");
 			
 			//5. SQL실행
-			int count = pstmt.executeUpdate();
+			rs = pstmt.executeQuery(sql);
 			
-			//count가 1일때 true로 변경
-			result = count == 1;
+			while(rs.next()) {
+				Long empNo = rs.getLong(1);
+				String firstName = rs.getString(2);
+				System.out.println(empNo + " : "+ firstName);
+			}
+			
+			
 		
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -54,7 +58,12 @@ public class InsertTest {
 			
 			//clean up 자원정리
 			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if(pstmt != null) {
 				pstmt.close();
+				}
 				if(conn != null) {
 					conn.close();
 				}
@@ -65,7 +74,6 @@ public class InsertTest {
 		}
 		
 		
-		return result;
 		
 	}
 
