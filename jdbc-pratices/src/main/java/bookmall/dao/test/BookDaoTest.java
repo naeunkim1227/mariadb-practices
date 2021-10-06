@@ -6,7 +6,9 @@ import bookmall.vo.BookVO;
 public class BookDaoTest {
 
 	public static void main(String[] args) {
-		insertTest();
+		//insertTest();
+		
+		findall();
 	}
 
 	private static void insertTest() {
@@ -20,5 +22,8 @@ public class BookDaoTest {
 		dao.insert(vo);
 		
 	}
-
+	
+	public void findall() {
+		
+	}
 }
