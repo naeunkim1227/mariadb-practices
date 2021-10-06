@@ -55,8 +55,6 @@ public class MemberDao implements Getconn{
 			rs = pstmt.executeQuery();
 		
 			while(rs.next()) {
-				rs.getString(1)
-				vo.set
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

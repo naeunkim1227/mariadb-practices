@@ -54,9 +54,12 @@ public class BookDao implements Getconn {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				BookVO vo = new BookVO();
+				vo.setTitle(rs.getString(1));
+				vo.setPrice(rs.getInt(2));
+				vo.setCategory(rs.getString(3));
 				
-				
-				
+				list.add(vo);
 			}
 			
 		} catch (SQLException e) {
