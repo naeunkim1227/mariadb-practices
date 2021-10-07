@@ -23,7 +23,7 @@ public class BookDaoTest {
 		
 	}
 	
-	public void findall() {
+	public static void findall() {
 		
 	}
 }

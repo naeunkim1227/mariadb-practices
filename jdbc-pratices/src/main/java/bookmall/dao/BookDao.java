@@ -10,14 +10,13 @@ import java.util.List;
 import bookmall.vo.BookVO;
 
 public class BookDao implements Getconn {
-	Connection conn = null;
+	static Connection conn = null;
 	PreparedStatement pstmt = null;
 	String sql = null;
 	ResultSet rs = null;
 	
-	
+	// insert 
 	public void insert(BookVO vo) {
-		System.out.println("BookDao insert() 실행");
 		try {
 			conn = Getconn.getconnection();
 			
@@ -37,10 +36,9 @@ public class BookDao implements Getconn {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
+	//select
 	public List<BookVO> findAll() {
 		List<BookVO> list = new ArrayList<BookVO>();
 		
@@ -66,14 +64,29 @@ public class BookDao implements Getconn {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
 		return list;
 	}
-
+	
+	
+	//update
+	public static void updateBook() {
+		
+		try {
+			conn = Getconn.getconnection();
+			
+			//sql
+			sql = "update book set ";
+			"update dept set name=? where no=?"
+			
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
 		
 	
 	
