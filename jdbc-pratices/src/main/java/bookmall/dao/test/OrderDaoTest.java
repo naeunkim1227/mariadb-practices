@@ -21,7 +21,6 @@ public class OrderDaoTest {
 		ovo.setAddress("부산시 진구2");
 		ovo.setMember_no(3);
 		ovo.setOrder_money(40000);
-		ovo.setOrder_no(3);
 		new OrderDao().insert(ovo);
 
 	}
@@ -36,7 +35,7 @@ public class OrderDaoTest {
 			memberVO mvo1 = mlist1.get(i);
 			OrderVO ovo1 = olist1.get(i);
 			
-			System.out.println("주문 번호 : " + ovo1.getOrder_no() + " / 주문자 : " + mvo1.getName() + " / 주소 : " + ovo1.getAddress() + " / 주문 금액 : " + ovo1.getOrder_money());
+			System.out.println("주문 번호 : " + ovo1.getNo()+ " / 주문자 : " + mvo1.getName() + " / 주소 : " + ovo1.getAddress() + " / 주문 금액 : " + ovo1.getOrder_money());
 		}
 
 	}

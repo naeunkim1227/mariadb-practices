@@ -1,6 +1,6 @@
 package bookmall.vo;
 
-public class BookorderVO {
+public class OrderbookVO {
 	private int no;
 	private int order_no;
 	private int book_no;
@@ -40,8 +40,9 @@ public class BookorderVO {
 	
 	@Override
 	public String toString() {
-		return "BookorderVO [no=" + no + ", order_no=" + order_no + ", book_no=" + book_no + ", order_book_count="
-				+ order_book_count + ", order_book_price=" + order_book_price + "]";
+		return 
+		"주문번호 : " + order_no + " / 책 번호 : " + book_no + " / 주문 수량 : " + order_book_count + "/ 가격 :  " +  order_book_price;
+	
 	}
 	
 	

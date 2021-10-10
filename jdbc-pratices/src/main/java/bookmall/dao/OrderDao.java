@@ -32,7 +32,7 @@ public class OrderDao {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, vo.getOrder_no());
+			pstmt.setInt(1, vo.getNo());
 			pstmt.setInt(2, vo.getOrder_money());
 			pstmt.setString(3, vo.getAddress());
 			pstmt.setInt(4, vo.getMember_no());
@@ -56,7 +56,7 @@ public class OrderDao {
 			System.out.println("OrderDao findall() 실행");
 			conn = Getconn.getconnection();
 			
-			sql = "select a.order_no,a.address,a.order_money, a.member_no ,b.name "
+			sql = "select a.no,a.address,a.order_money, a.member_no ,b.name "
 					+ "from bookmall.order a join member b on a.member_no = b.no";
 			
 			pstmt =conn.prepareStatement(sql);
@@ -67,7 +67,7 @@ public class OrderDao {
 				OrderVO ovo = new OrderVO();
 				memberVO mvo = new memberVO();
 				
-				ovo.setOrder_no(rs.getInt(1));
+				ovo.setNo(rs.getInt(1));
 				ovo.setAddress(rs.getString(2));
 				ovo.setOrder_money(rs.getInt(3));
 				ovo.setMember_no(rs.getInt(4));

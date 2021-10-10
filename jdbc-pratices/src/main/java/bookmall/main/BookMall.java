@@ -8,10 +8,12 @@ import bookmall.dao.CartDao;
 import bookmall.dao.CategoryDao;
 import bookmall.dao.MemberDao;
 import bookmall.dao.OrderDao;
+import bookmall.dao.OrderbookDao;
 import bookmall.vo.BookVO;
 import bookmall.vo.CartVO;
 import bookmall.vo.CategoryVO;
 import bookmall.vo.OrderVO;
+import bookmall.vo.OrderbookVO;
 import bookmall.vo.memberVO;
 
 public class BookMall {
@@ -91,7 +93,6 @@ public class BookMall {
 		ovo.setAddress("부산시 진구2");
 		ovo.setMember_no(3);
 		ovo.setOrder_money(40000);
-		ovo.setOrder_no(3);
 		new OrderDao().insert(ovo);
 		
 		
@@ -105,7 +106,7 @@ public class BookMall {
 			memberVO mvo1 = mlist1.get(i);
 			OrderVO ovo1 = olist1.get(i);
 			
-			System.out.println("주문 번호 : " + ovo1.getOrder_no() + " / 주문자 : " + mvo1.getName() + " / 주소 : " + ovo1.getAddress() + " / 주문 금액 : " + ovo1.getOrder_money());
+			System.out.println("주문 번호 : " + ovo1.getNo() + " / 주문자 : " + mvo1.getName() + " / 주소 : " + ovo1.getAddress() + " / 주문 금액 : " + ovo1.getOrder_money());
 		}
 		
 		///////////////////////////////////////////////////////////////
@@ -136,9 +137,18 @@ public class BookMall {
 			
 		}
 		///////////////////////////////////////////////////////////////
+		//Order_book table
+		//insert
+		int orderno = 3;
+		new OrderbookDao().insert(orderno);
 		
+		//findall
+		List<OrderbookVO> oblist = new OrderbookDao().findall();
+		System.out.println("=======================주문 책 리스트=============================");
+		for(OrderbookVO vo : oblist) {
+			System.out.println(vo);
+		}
 		
-
 	}
 
 }
