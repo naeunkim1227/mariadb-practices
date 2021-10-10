@@ -18,6 +18,7 @@ public class BookDao implements Getconn {
 	// insert 
 	public void insert(BookVO vo) {
 		try {
+			System.out.println("Bookdao insert() 실행");
 			conn = Getconn.getconnection();
 			
 			//SQL 준비
@@ -43,6 +44,7 @@ public class BookDao implements Getconn {
 		List<BookVO> list = new ArrayList<BookVO>();
 		
 		try {
+			System.out.println("Bookdao findall() 실행");
 			conn = Getconn.getconnection();
 			
 			sql = "select a.title, a.price, b.category "
@@ -66,28 +68,5 @@ public class BookDao implements Getconn {
 		}
 		return list;
 	}
-	
-	
-	//update
-	public static void updateBook() {
-		
-		try {
-			conn = Getconn.getconnection();
-			
-			//sql
-			sql = "update book set ";
-			"update dept set name=? where no=?"
-			
-		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-	}
-		
-	
 	
 }
